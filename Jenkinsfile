@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-      node "Node"
+      nodejs "Node"
       git "Default"
     }
 
