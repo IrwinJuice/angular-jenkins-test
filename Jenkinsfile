@@ -13,6 +13,14 @@ pipeline {
                 powershell 'ng build'
             }
         }
+
+         stage('Delete Files') {
+             steps {
+                 fileOperations([
+                     fileDeleteOperation(includeFilePattern: '**/app.config.json')
+                 ])
+             }
+         }
         stage('Test') {
             steps {
                 echo 'Testing..'
