@@ -9,7 +9,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+                powershell 'npm install'
+                powershell 'ng build'
             }
         }
         stage('Test') {
