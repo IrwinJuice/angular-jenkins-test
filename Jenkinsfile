@@ -17,7 +17,7 @@ pipeline {
          stage('Delete Files') {
              steps {
                  fileOperations([
-                     fileDeleteOperation(includeFilePattern: '**/app.config.json')
+                     fileDeleteOperation(includeFilePattern: '**/app.config.json', excludes: '')
                  ])
              }
          }
