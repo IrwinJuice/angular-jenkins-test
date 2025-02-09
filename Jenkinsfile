@@ -14,13 +14,27 @@ pipeline {
             }
         }
 
-         stage('Delete Files') {
-             steps {
-                 fileOperations([
-                     fileDeleteOperation(excludes: '', includes: '**/app.config.js')
-                 ])
-             }
-         }
+        stage('Delete Files') {
+            steps {
+                fileOperations([
+                    fileDeleteOperation(excludes: '', includes: '**/app.config.js')
+                ])
+            }
+        }
+
+        stage('Zip bundle') {
+            steps {
+              script {
+                def dist = "${WORKSPACE}/dist/angular-jenkins/browser"
+                def zipFileName = 'angular-jenkins.zip'
+                fileOperations([
+                    fileZipOperation(path: "${dist}", zipFileName: zipFileName)
+                ])
+                archiveArtifacts artifacts: zipFileName, allowEmptyArchive: true
+              }
+            }
+        }
+
         stage('Test') {
             steps {
                 echo 'Testing..'
