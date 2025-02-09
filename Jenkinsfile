@@ -25,11 +25,13 @@ pipeline {
         stage('Zip bundle') {
             steps {
               script {
-                def dist = "${WORKSPACE}/dist/angular-jenkins/browser"
+                def dist = "${WORKSPACE}/dist/angular-jenkins/browser/"
                 def zipFileName = 'angular-jenkins.zip'
-                fileOperations([
-                    fileZipOperation(folderPath: "${dist}")
-                ])
+
+                zip(zipFile: zipFileName, archive: true, dir: dist)
+//                 fileOperations([
+//                     fileZipOperation(folderPath: "${dist}")
+//                 ])
 //                 archiveArtifacts artifacts: zipFileName, allowEmptyArchive: true
               }
             }
