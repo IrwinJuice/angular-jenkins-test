@@ -30,7 +30,7 @@ pipeline {
                 fileOperations([
                     fileZipOperation(folderPath: "${dist}")
                 ])
-                archiveArtifacts artifacts: zipFileName, allowEmptyArchive: true
+//                 archiveArtifacts artifacts: zipFileName, allowEmptyArchive: true
               }
             }
         }
