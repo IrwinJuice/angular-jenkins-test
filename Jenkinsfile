@@ -28,7 +28,7 @@ pipeline {
                 def dist = "${WORKSPACE}/dist/angular-jenkins/browser"
                 def zipFileName = 'angular-jenkins.zip'
                 fileOperations([
-                    fileZipOperation(path: "${dist}", zipFileName: zipFileName)
+                    fileZipOperation(folderPath: "${dist}")
                 ])
                 archiveArtifacts artifacts: zipFileName, allowEmptyArchive: true
               }
